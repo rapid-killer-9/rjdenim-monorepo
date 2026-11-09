@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+.next/
+out/
+build/
+
+# Environment files — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# TypeScript incremental build caches
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / Editor
+.DS_Store
+*.pem
+.idea/
+.vscode/settings.json
+
+# Deployment
+.vercel
+.turbo

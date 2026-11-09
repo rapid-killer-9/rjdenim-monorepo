@@ -1,0 +1,23 @@
+{
+  "name": "rjdenim-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w packages/shared-types && npm run build --workspaces --if-present",
+    "dev": "concurrently -n types,api,web,admin -c blue,yellow,green,magenta \"npm run dev -w packages/shared-types\" \"npm run dev -w services/api-backend\" \"npm run dev -w apps/web-store\" \"npm run dev -w apps/admin-dashboard\"",
+    "dev:web": "npm run dev -w apps/web-store",
+    "dev:admin": "npm run dev -w apps/admin-dashboard",
+    "dev:api": "npm run dev -w services/api-backend",
+    "type-check": "npm run type-check --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "clean": "find . -name 'dist' -not -path '*/node_modules/*' -exec rm -rf {} + ; find . -name '.next' -not -path '*/node_modules/*' -exec rm -rf {} + ; find . -name 'node_modules' -exec rm -rf {} +"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.2"
+  }
+}
